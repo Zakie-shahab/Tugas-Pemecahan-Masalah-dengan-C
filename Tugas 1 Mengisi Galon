@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    //  Kamus  //
+    int i;
+    int a;
+    int b;
+    int comp;
+    a = 0;
+    b = 0;
+    comp = 0;
+    
+    // Algoritma //
+    printf("Buatlah galon berisi 4 liter dengan perintah yang diberikan");
+    printf("\n");
+    printf("\n");
+    while (b != 4)
+    {
+        printf("          Galon 3 liter           Galon 5 Liter");
+        printf("\n");
+        printf("                 %d ", a);
+        printf("                     %d", b);
+        printf("\n");
+        printf("\n");
+        printf("1. Isi penuh galon 3 liter");
+        printf("\n");
+        printf("2. Isi penuh galon 5 liter");
+        printf("\n");
+        printf("3. Tuang isi galon 3 liter ke galon 5 liter");
+        printf("\n");
+        printf("4. Tuang isi galon 5 liter ke galon 3 liter");
+        printf("\n");
+        printf("5. Kosongkan galon 3 liter");
+        printf("\n");
+        printf("6. Kosongkan galon 5 liter");
+        printf("\n");
+        printf("\n");
+        printf("Masukkan perintah : ");
+        scanf("%d", &i);
+        if (i == 1)
+        {
+            a = 3;
+        }
+        else if (i == 2)
+        {
+            b = 5;
+        }
+        else if (i == 3)
+        {
+            if (a+b > 5)
+            {
+                comp = 5-b;
+                b = 5;
+                a = a-comp;
+            }
+            else
+            {
+                b = b+a;
+                a = 0;
+            }
+        }
+        else if (i == 4)
+        {
+            if (a+b > 3)
+            {
+                comp = 3-a;
+                a = 3;
+                b = b-comp;
+            }
+            else
+            {
+                a = b+a;
+                b = 0;
+            }
+        }
+        else if (i == 5)
+        {
+            a = 0;
+        }
+        else if (i == 6)
+        {
+            b = 0;
+        }
+        else
+        {
+            printf("input tidak dikenali");
+            printf("\n");
+        }
+    }
+    return 0;
+}
