@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i, nop, quant, wk[10], we[10], y;
+    printf("Masukkan jumlah proses: ");
+    scanf("%d", &nop);
+
+    for(i=0; i<nop; i++)
+    {
+        printf("\nProses %d\n", i);
+        printf("Waktu kedatangan: ");
+        scanf("%d", &wk[i]);
+        printf("\nWaktu eksekusi: ");
+        scanf("%d", &we[i]);
+    }
+
+    printf("Masukkan waktu kuantum: ");
+    scanf("%d", &quant);
+    printf("\nProses     Waktu kedatangan      Waktu eksekusi");
+    y = 0;
+    while(y+1 != nop)
+    {
+        printf("\nProses %d", y);
+        printf("      %d", wk[y]);
+        printf("      %d", we[y]);
+        y = y+1;
+    }
+
+    printf("Waktu kuantum: %d", quant);
+}
