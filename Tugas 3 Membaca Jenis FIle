@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char filename[] = "cek.jpg"; //Masukkan nama file disini, ganti cek.jpg dengan file lain
+    char CC;
+    FILE *myfile;
+    int retval;
+    myfile = fopen(filename, "r");
+    retval = fscanf(myfile, "%c", &CC);
+    if (CC == -1)
+    {
+        printf("Jenis file adalah JPG");
+    }
+    else if (CC == 37)
+    {
+        printf("Jenis file adalah PDF");
+    }
+    else
+    {
+        printf("Jenis file tidak diketahui");
+    }
+    fclose(myfile);
+    return (0);
+}
