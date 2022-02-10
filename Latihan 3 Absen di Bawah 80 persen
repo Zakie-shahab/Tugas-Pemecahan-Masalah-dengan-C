@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct data_mhs
+{
+    char nama[80];
+    int nim;
+    float kehadiran;
+};
+
+// data mahasiswa sesuaikan dengan yang diinginkan
+struct data_mhs kls[40] = {{"hasan", 1, 80.0}, {"huha", 2, 30.0}, {"hihi", 3, 90.0}, {"pekora", 4, 100.0}};
+
+int main()
+{
+    int i;
+    i = 0;
+    while (i != 4) //angkanya sesuaikan dengan jumlah mahasiswa
+    {
+        if (kls[i].kehadiran < 80.0)
+        {
+            printf("%s %d", kls[i].nama, kls[0].nim);
+        }
+        i = i + 1;
+    }
+    return(0);
+}
