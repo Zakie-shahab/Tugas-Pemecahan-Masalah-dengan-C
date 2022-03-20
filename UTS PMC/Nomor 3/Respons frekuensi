@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int waktu;
+    int jumlahtrace;
+    printf("Masukkan lama tracing: ");
+    scanf("%d", &waktu);
+    printf("Masukkan jumlah tracing: ");
+    scanf("%d", &jumlahtrace);
+    float tracer[jumlahtrace];
+    for(int i=0;i<jumlahtrace;++i)
+    {
+        tracer[i] = waktu*(i+1)/jumlahtrace;
+    }
+    int atasreal = 5;
+    int bawahreal = 1;
+    float hasilatas[jumlahtrace];
+    float hasilbawah[jumlahtrace];
+    for(int i=0;i<jumlahtrace;++i)
+    {
+        hasilatas[i] = atasreal*tracer[i];
+        hasilbawah[i] = bawahreal*tracer[i];
+    }
+    char imajinerbawah[255] = "j5.28(pi) x 10^-3";
+    for(int i=0;i<jumlahtrace;++i)
+    {
+        printf("Trace pada %.2f: %.2f/(%.2f + %s)\n", tracer[i], hasilatas[i], hasilbawah[i], imajinerbawah);
+    }
+}
