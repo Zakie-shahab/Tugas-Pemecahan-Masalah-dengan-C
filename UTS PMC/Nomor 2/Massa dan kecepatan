@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#define max 10
+
+int main()
+{
+    float mo = 9.109/10000000000000000000000000000000;
+    float e = 1.602/10000000000000000000;
+    float c = 2.9979*100000000;
+    char* token;
+    //char namafile = "tegangan.txt";
+    FILE* myfile = fopen("tegangan.txt", "r");
+    float tegangan[max];
+    int i = 0;
+    char line[25];
+    while (fgets(line, max, myfile))
+    {
+        token = strtok(line, "\n");
+        tegangan[i] = atof(token);
+        ++i;
+    }
+    float massa[max];
+    float cepat[max];
+    for(int j=0;j<max;++j)
+    {
+        massa[j] = ((tegangan[j]*e*1000000 + mo*c*c)/(c*c))*1000000000000000000000000000000;
+        cepat[j] = (sqrt((c*c)-(c*c)/((massa[j]/mo)*(massa[j]/mo))))/100000000;
+    }
+    for(int k=0;k<max;++k)
+    {
+        printf("Massa %d = %.8f x 10^-30\n", k, massa[k]);
+        printf("Kecepatan %d = %.8f x 10^8\n", k, cepat[k]);
+    }
+}
