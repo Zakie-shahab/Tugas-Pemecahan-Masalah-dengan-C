@@ -1,0 +1,153 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define max 255
+
+int main()
+{
+    char namafile[max];
+
+    int pilihan;
+    printf("1. create - untuk membuat data\n");
+    printf("2. update - untuk menambahkan data\n");
+    printf("3. delete - untuk menghapus data\n");
+    printf("4. search - untuk mencari data\n");
+    printf("Pilih angka untuk operasi yang ingin dilakukan: ");
+    scanf("%d", &pilihan);
+
+    if (pilihan == 2)
+    {
+        printf("Masukkan nama file yang akan diproses: ");
+        scanf("%s", &namafile);
+        FILE* myfile = fopen(namafile, "a");
+        char nomor[max] = "21";
+        char NIK[max];
+        char nama[max];
+        char tempat[max];
+        char tanggal[max];
+        char umur[max];
+        char jenis kelamin[max];
+        char goldar[max];
+        char kawin[max];
+        char pekerjaan[max];
+        printf("Masukkan NIK: ");
+        scanf("%s", &NIK);
+        printf("Masukkan nama lengkap: ");
+        scanf("%s", &nama);
+        printf("Masukkan tanggal lahir: ");
+        scanf("%s", &tanggal);
+        printf("Masukkan umur: ");
+        scanf("%s", &umur);
+        printf("Masukkan jenis kelamin: ");
+        scanf("%s", &kelamin);
+        printf("Masukkan golongan darah: ");
+        scanf("%s", &goldar);
+        printf("Masukkan status perkawinan: ");
+        scanf("%s", &kawin);
+        printf("Masukkan pekerjaan: ");
+        scanf("%s", &pekerjaan);
+        fprintf(myfile, "%s;%s;%s;%s;%s;%s;%s;%s;%s;%s", nomor, NIK, nama, tempat, tanggal, umur, kelamin, goldar, kawin, pekerjaan);
+        fclose(myfile);
+        printf("Data berhasil ditambah");
+    }
+
+    else if (pilihan == 1)
+    {
+        printf("Masukkan nama file yang akan diproses: ");
+        scanf("%s", &namafile);
+        FILE* myfile = fopen(namafile, "w");
+        char nomor[max] = "21";
+        char NIK[max];
+        char nama[max];
+        char tempat[max];
+        char tanggal[max];
+        char umur[max];
+        char jenis kelamin[max];
+        char goldar[max];
+        char kawin[max];
+        char pekerjaan[max];
+        printf("Masukkan NIK: ");
+        scanf("%s", &NIK);
+        printf("Masukkan nama lengkap: ");
+        scanf("%s", &nama);
+        printf("Masukkan tanggal lahir: ");
+        scanf("%s", &tanggal);
+        printf("Masukkan umur: ");
+        scanf("%s", &umur);
+        printf("Masukkan jenis kelamin: ");
+        scanf("%s", &kelamin);
+        printf("Masukkan golongan darah: ");
+        scanf("%s", &goldar);
+        printf("Masukkan status perkawinan: ");
+        scanf("%s", &kawin);
+        printf("Masukkan pekerjaan: ");
+        scanf("%s", &pekerjaan);
+        fprintf(myfile, "%s;%s;%s;%s;%s;%s;%s;%s;%s;%s", nomor, NIK, nama, tempat, tanggal, umur, kelamin, goldar, kawin, pekerjaan);
+        fclose(myfile);
+        printf("Data berhasil dibuat");
+    }
+
+    else if (pilihan == 3)
+    {
+        char temp[max];
+        char line[max][max];
+        int i = 0;
+        printf("Masukkan nama file yang akan diproses: ");
+        scanf("%s", &namafile);
+        FILE* myfile = fopen(namafile, "r");
+        char lepas[max];
+        printf("Masukkan nomor yang ingin anda delete: ");
+        scanf("%s", &lepas);
+        while (fgets(temp, max, myfile))
+        {
+            if (strncmp(temp, lepas, 2))
+            {
+                ++i;
+            }
+            else
+            {
+                line[i] = temp;
+                ++i;
+            }
+        }
+        fclose(myfile);
+        FILE* myfile = fopen(namafile, "w");
+        fprintf(myfile, "%s", line[0]);
+        fclose(myfile);
+        FILE* myfile = fopen(namafile, "a");
+        for(int i = 0;i<max-1;++i)
+        {
+            fprintf(myfile, "%s", line[i+1]);
+        }
+        fclose(myfile);
+    }
+
+    else if (pilihan == 4)
+    {
+        printf("Masukkan nama file yang akan diproses: ");
+        scanf("%s", &namafile);
+        FILE* myfile = fopen(namafile, "r");
+        char temp[max];
+        char line[max];
+        int i = 0;
+        char cari[max];
+        printf("Masukkan NIK atau nama atau umur yang akan dicari: ");
+        scanf("%s", &cari);
+        while (fgets(temp, max, myfile))
+        {
+            line = strstr(temp, cari);
+            if (line != NULL)
+            {
+                printf("%s", temp);
+            }
+            line = NULL;
+        }
+        fclose(myfile);
+    }
+
+    else
+    {
+        printf("Pilihan tidak terdaftar");
+    }
+    return 0;
+}
