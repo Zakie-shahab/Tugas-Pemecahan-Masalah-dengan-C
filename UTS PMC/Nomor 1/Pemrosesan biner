@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    signed a;
+    signed x;
+    signed y;
+    signed op;
+    int pil;
+    printf("Masukkan nilai biner dari A: ");
+    scanf("%d", &a);
+    printf("Masukkan nilai biner dari x: ");
+    scanf("%d", &x);
+    printf("Masukkan nilai biner dari y: ");
+    scanf("%d", &y);
+    printf("1. (A&y)^x\n");
+    printf("2. (~(y>>4)&&x)+A\n");
+    printf("3. ((x>>2)|y)*A\n");
+    printf("Masukkan pilihan operasi: ");
+    scanf("%d", &pil);
+    if (pil == 1)
+    {
+        op = (a&y)^x;
+        printf("%d", op);
+    }
+    else if (pil == 2)
+    {
+        op = (~(y>>4)&&x)+a;
+        printf("%d", op);
+    }
+    else if (pil == 3)
+    {
+        op = ((x>>2)|y)*a;
+        printf("%d", op);
+    }
+    else
+    {
+        printf("Pilihan tidak terdaftar");
+    }
+    return(0);
+}
